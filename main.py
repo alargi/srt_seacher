@@ -50,15 +50,19 @@ def find_folder(key='梓'):
     return file_to_return
 
 def find(name_key='梓',key_word='去了'):
+    nnnn=0
     folder_list=find_folder(name_key)
     for folder in folder_list:
         srt_list=srt_listdir(folder)
         for srt in srt_list:
             time_dots=find_from_srt(key_word,srt,folder)
-            print(folder)
-            print(srt)
+            if not time_dots:
+                continue
+            nnnn=1
+            print(folder+'\\'+srt[0:-13]+'.mp4')
             print(time_dots)
             print()
+    if not nnnn:
+        print('no such word')
 
-
-find('炫','去了')
+find('炫','这么')
